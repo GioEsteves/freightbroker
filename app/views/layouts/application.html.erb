@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Freight360</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <%if customer_signed_in? %>
+  <%= current_customer.email %><%= link_to "Sign Out", destroy_customer_session_path, :method => 'delete' %>
+  <%elsif carrier_signed_in? %>
+  <%= current_carrier.email %><%= link_to "Sign Out", destroy_carrier_session_path, :method => 'delete' %>
+  <% end %>
+    <%= yield %>
+  </body>
+</html>
